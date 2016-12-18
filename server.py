@@ -1,4 +1,5 @@
 from http.server import BaseHTTPRequestHandler, HTTPServer
+import os
 
 
 class RequestHandler(BaseHTTPRequestHandler):
@@ -18,6 +19,7 @@ class RequestHandler(BaseHTTPRequestHandler):
 '''
 
     def do_GET(self):
+        full_path = os.getcwd() + self.path
         page = self.create_page()
         self.send_page(bytes(page, "utf-8"))
 
