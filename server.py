@@ -33,6 +33,7 @@ class RequestHandler(BaseHTTPRequestHandler):
             if self.path == '/':
                 page = self.create_page()
                 self.send_page(page)
+            # The file not exists
             elif not os.path.exists(full_path):
                 raise Exception("{0} not found".format(self.path))
             elif os.path.isfile(full_path):
